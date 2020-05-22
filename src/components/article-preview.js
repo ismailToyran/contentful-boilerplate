@@ -1,15 +1,14 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 
-import styles from './article-preview.module.css'
-
 export default ({ article }) => (
-  <div className={styles.preview}>
+  <div>
     <Img alt="" fluid={article.heroImage.fluid} />
-    <h3 className={styles.previewTitle}>
+    <PreviewTitle>
       <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </h3>
+    </PreviewTitle>
     <small>{article.publishDate}</small>
     <div
       dangerouslySetInnerHTML={{
@@ -18,9 +17,24 @@ export default ({ article }) => (
     />
     {article.tags &&
       article.tags.map(tag => (
-        <p className={styles.tag} key={tag}>
+        <Tag key={tag}>
           {tag}
-        </p>
+        </Tag>
       ))}
   </div>
 )
+
+const PreviewTitle = styled.h3`
+  font-size: 1.5em;
+`;
+
+const Tag = styled.p`
+  color: #A0A0A0;
+  text-decoration: none;
+  display: inline-block;
+  padding: .33333rem .5rem;
+  line-height: 1;
+  border-radius: 2px;
+  border: 1px solid #A0A0A0;
+  margin-right: .5em;
+`;
