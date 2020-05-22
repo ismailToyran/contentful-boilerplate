@@ -7,9 +7,7 @@
     "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
   },
   "dependencies": {
-    "@babel/runtime-corejs3": "^7.9.6",
     "babel-plugin-styled-components": "^1.10.7",
-    "core-js": "^3",
     "gatsby-image": "^2.4.5",
     "gatsby-plugin-manifest": "^2.4.9",
     "gatsby-plugin-offline": "^3.2.7",
