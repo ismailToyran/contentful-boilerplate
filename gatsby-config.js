@@ -36,6 +36,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
     'gatsby-plugin-preload-link-crossorigin',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
@@ -71,12 +72,6 @@ module.exports = {
             globPatterns: ['**/*']
          }
       }
-   },
-   {
-    resolve: `gatsby-plugin-styled-components`,
-    options: {
-      // Add any options here
-    },
    },
   ],
 }
