@@ -6,16 +6,8 @@ import Container from './container'
 import Navigation from './navigation'
 
 const GlobalStyle = createGlobalStyle`
-  @font-face {
-  font-family: "Avenir";
-  font-weight: 400;
-  font-style: normal;
-  src: url("/avenir-400.woff2") format("woff2");
-  font-display: swap;
-}
-
 body {
-  font-family: "Avenir", Tahoma, Arial, Helvetica, sans-serif;
+  font-family: Tahoma, Arial, Helvetica, sans-serif;
   font-size: 1em;
   line-height: 1.65;
   color: #373F49;
@@ -45,9 +37,6 @@ a {
   padding: 5vmin 0;
 }
 
-/**
- * article grid
- */
 .article-list {
   margin: 0;
   padding: 0;
@@ -57,18 +46,12 @@ a {
   grid-gap: 5vmin;
 }
 
-/**
- *
- */
 .section-headline {
   padding: 0 0 0.4em 0;
   margin: 0 0 5vmin 0;
   border-bottom: 1px solid #ddd;
 }
 
-/**
- *
- */
 .list-inline {
   margin: 0;
   padding: 0;
@@ -91,12 +74,13 @@ class Template extends React.Component {
     }
 
     return (
-      <GlobalStyle>
+      <>
+      <GlobalStyle />
         <Container>
           <Navigation />
           {children}
         </Container>
-      </GlobalStyle>
+      </>
     )
   }
 }
