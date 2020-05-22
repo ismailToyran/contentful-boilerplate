@@ -1,16 +1,36 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Link } from 'gatsby'
-import styles from './navigation.module.css'
 
 export default () => (
   <nav role="navigation">
-    <ul className={styles.navigation}>
-      <li className={styles.navigationItem}>
+    <UL>
+      <LI>
         <Link to="/">Home</Link>
-      </li>
-      <li className={styles.navigationItem}>
+      </LI>
+      <LI>
         <Link to="/blog/">Blog</Link>
-      </li>
-    </ul>
+      </LI>
+    </UL>
   </nav>
 )
+
+const UL = styled.ul`
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 20vh;
+  max-height: 100px;
+  font-size: 1.25em;
+`;
+
+const LI = styled.li`
+  display: inline-flex;
+  align-items: center;
+  margin: 0 1em;
+  a {
+    color: currentColor;
+  }
+`;
