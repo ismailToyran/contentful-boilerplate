@@ -38,6 +38,21 @@ module.exports = {
     'gatsby-plugin-preload-link-crossorigin',
     'gatsby-plugin-styled-components',
     {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.ismailtoyran.com',
+        sitemap: 'https://www.ismailtoyran.com/sitemap.xml',
+        env: {
+          development: {
+            policy: [{ userAgent: '*', disallow: ['/'] }]
+          },
+          production: {
+            policy: [{ userAgent: '*', allow: '/' }]
+          }
+        }
+      }
+    },
+    {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
     },
