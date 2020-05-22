@@ -35,6 +35,7 @@ module.exports = {
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sharp',
     'gatsby-plugin-sitemap',
+    'gatsby-plugin-preload-link-crossorigin',
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
