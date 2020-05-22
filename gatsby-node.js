@@ -2,8 +2,9 @@ const Promise = require('bluebird')
 const path = require('path')
 
 exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  const config = getConfig()
+  
   if (stage === 'build-javascript') {
-    const config = getConfig()
     const miniCssExtractPlugin = config.plugins.find(
       plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
     )
@@ -11,6 +12,16 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
       miniCssExtractPlugin.options.ignoreOrder = true
     }
     actions.replaceWebpackConfig(config)
+  }
+
+  if (stage.startsWith("develop")) {
+    actions.setWebpackConfig({
+      resolve: {
+        alias: {
+          "react-dom": "@hot-loader/react-dom",
+        },
+      },
+    })
   }
 }
 
