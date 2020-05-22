@@ -2,19 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'gatsby'
 
-export default () => (
-  <nav role="navigation">
-    <UL>
-      <LI>
-        <Link to="/">Home</Link>
-      </LI>
-      <LI>
-        <Link to="/blog/">Blog</Link>
-      </LI>
-    </UL>
-  </nav>
-)
-
 const UL = styled.ul`
   display: flex;
   justify-content: center;
@@ -34,3 +21,16 @@ const LI = styled.li`
     color: currentColor;
   }
 `;
+
+export default () => (
+  <nav role="navigation">
+    <UL>
+      <LI>
+        <Link to="/">Home</Link>
+      </LI>
+      <LI>
+        <Link to="/blog/">Blog</Link>
+      </LI>
+    </UL>
+  </nav>
+)

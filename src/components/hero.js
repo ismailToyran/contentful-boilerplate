@@ -2,20 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import Img from 'gatsby-image'
 
-export default ({ data }) => (
-  <Hero>
-    <HeroImage
-      alt={data.name}
-      fluid={data.heroImage.fluid}
-    />
-    <HeroDetails>
-      <h3>{data.name}</h3>
-      <HeroTitle>{data.title}</HeroTitle>
-      <p>{data.shortBio.shortBio}</p>
-    </HeroDetails>
-  </Hero>
-)
-
 const Hero = styled.div`
   position: relative;
   background: #000;
@@ -52,3 +38,17 @@ const HeroTitle = styled.p`
   font-size: 1.125em;
   font-weight: bold;
 `;
+
+export default ({ data }) => (
+  <Hero>
+    <HeroImage
+      alt={data.name}
+      fluid={data.heroImage.fluid}
+    />
+    <HeroDetails>
+      <h3>{data.name}</h3>
+      <HeroTitle>{data.title}</HeroTitle>
+      <p>{data.shortBio.shortBio}</p>
+    </HeroDetails>
+  </Hero>
+)

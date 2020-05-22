@@ -6,6 +6,18 @@ import get from 'lodash/get'
 import Img from 'gatsby-image'
 import Layout from '../components/layout'
 
+const Hero = styled.div`
+  position: relative;
+  background: #000;
+  color: #fff;
+  text-align: center;
+`;
+
+const HeroImage = styled(Img)`
+  height: 61.8vh;
+  max-height: 400px;
+`
+
 class BlogPostTemplate extends React.Component {
   render() {
     const post = get(this.props, 'data.contentfulBlogPost')
@@ -41,18 +53,6 @@ class BlogPostTemplate extends React.Component {
     )
   }
 }
-
-const Hero = styled.div`
-  position: relative;
-  background: #000;
-  color: #fff;
-  text-align: center;
-`;
-
-const HeroImage = styled(Img)`
-  height: 61.8vh;
-  max-height: 400px;
-`
 
 export default BlogPostTemplate
 
