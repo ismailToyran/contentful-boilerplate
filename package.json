@@ -7,6 +7,7 @@
     "url": "https://github.com/contentful-userland/gatsby-contentful-starter/issues"
   },
   "dependencies": {
+    "babel-plugin-styled-components": "^1.10.7",
     "gatsby-image": "^2.3.4",
     "gatsby-plugin-manifest": "^2.4.8",
     "gatsby-plugin-offline": "^3.2.6",
@@ -21,7 +22,8 @@
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.0.0",
-    "sharp": "^0.25.2"
+    "sharp": "^0.25.2",
+    "styled-components": "^5.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
