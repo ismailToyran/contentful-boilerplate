@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 import get from 'lodash/get'
 import Img from 'gatsby-image'
-import Layout from '../components/layout'
+import Layout from "../components/layout/index"
 
 const Hero = styled.div`
   position: relative;
@@ -24,9 +24,8 @@ class BlogPostTemplate extends React.Component {
     const siteTitle = get(this.props, 'data.site.siteMetadata.title')
 
     return (
-      <Layout location={this.props.location}>
+      <Layout title={post.title}>
         <div style={{ background: '#fff' }}>
-          <Helmet title={`${post.title} | ${siteTitle}`} />
           <Hero>
             <HeroImage
               alt={post.title}

@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link, graphql } from 'gatsby'
 import get from 'lodash/get'
-import { Helmet } from 'react-helmet'
 
-import Layout from '../components/layout'
+import Layout from "../components/layout/index"
 import ArticlePreview from '../components/article-preview'
 
 const Hero = styled.div`
@@ -24,9 +23,8 @@ class BlogIndex extends React.Component {
     const posts = get(this, 'props.data.allContentfulBlogPost.edges')
 
     return (
-      <Layout location={this.props.location}>
+      <Layout title={siteTitle}>
         <div style={{ background: '#fff' }}>
-          <Helmet title={siteTitle} />
           <Hero>Blog</Hero>
           <div className="wrapper">
             <h2 className="section-headline">Recent articles</h2>

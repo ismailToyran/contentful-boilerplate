@@ -31,7 +31,7 @@ module.exports = {
     siteUrl: `https://www.ismailtoyran.com`,
     description: `A simple description about pandas eating lots...`,
     author: `ismail Toyran`,
-    keywords: `Portfolio`
+    keywords: ["gatsby", "contentful", "portfolio"],
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
