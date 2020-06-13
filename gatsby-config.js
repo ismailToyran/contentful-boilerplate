@@ -7,6 +7,8 @@ const contentfulConfig = {
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 }
 
+const googleTagManagerId = process.env.GTM_ID
+
 // if you want to use the preview API please define
 // CONTENTFUL_HOST in your environment config
 // the `host` property should map to `preview.contentful.com`
@@ -27,9 +29,20 @@ module.exports = {
   siteMetadata: {
     title: 'Gatsby Contentful starter',
     siteUrl: `https://www.ismailtoyran.com`,
+    description: `A simple description about pandas eating lots...`,
+    author: `ismail Toyran`,
+    keywords: `Portfolio`
   },
   pathPrefix: '/gatsby-contentful-starter',
   plugins: [
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: googleTagManagerId,
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+      },
+    },
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
