@@ -8,13 +8,13 @@ const PreviewTitle = styled.h3`
 `;
 
 const Tag = styled.p`
-  color: #A0A0A0;
+  color: #767676;
   text-decoration: none;
   display: inline-block;
   padding: .33333rem .5rem;
   line-height: 1;
   border-radius: 2px;
-  border: 1px solid #A0A0A0;
+  border: 1px solid #767676;
   margin-right: .5em;
 `;
 
