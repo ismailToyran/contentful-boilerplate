@@ -1,7 +1,7 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link } from 'gatsby'
-import Img from 'gatsby-image'
+import React from 'react';
+import styled from 'styled-components';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
 
 const PreviewTitle = styled.h3`
   font-size: 1.5em;
@@ -11,11 +11,11 @@ const Tag = styled.p`
   color: #767676;
   text-decoration: none;
   display: inline-block;
-  padding: .33333rem .5rem;
+  padding: 0.33333rem 0.5rem;
   line-height: 1;
   border-radius: 2px;
   border: 1px solid #767676;
-  margin-right: .5em;
+  margin-right: 0.5em;
 `;
 
 export default ({ article }) => (
@@ -27,14 +27,9 @@ export default ({ article }) => (
     <small>{article.publishDate}</small>
     <div
       dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html,
+        __html: article.description.childMarkdownRemark.html
       }}
     />
-    {article.tags &&
-      article.tags.map(tag => (
-        <Tag key={tag}>
-          {tag}
-        </Tag>
-      ))}
+    {article.tags && article.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
   </div>
-)
+);

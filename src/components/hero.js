@@ -1,8 +1,8 @@
-import React from 'react'
-import styled from 'styled-components'
-import Img from 'gatsby-image'
+import React from 'react';
+import styled from 'styled-components';
+import Img from 'gatsby-image';
 
-const Hero = styled.div`
+const StyledHero = styled.div`
   position: relative;
   background: #000;
   color: #fff;
@@ -12,7 +12,7 @@ const Hero = styled.div`
 const HeroImage = styled(Img)`
   height: 61.8vh;
   max-height: 400px;
-`
+`;
 
 const HeroDetails = styled.div`
   position: absolute;
@@ -22,10 +22,10 @@ const HeroDetails = styled.div`
   transform: translate(-50%, 0);
   font-size: 14px;
   padding: 0 0.5em;
-  @media(min-width: 1000px) {
+  @media (min-width: 1000px) {
     font-size: 20px;
   }
-  @media(min-width: 600px) {
+  @media (min-width: 600px) {
     font-size: 16px;
   }
   h3 {
@@ -39,16 +39,15 @@ const HeroTitle = styled.p`
   font-weight: bold;
 `;
 
-export default ({ data }) => (
-  <Hero>
-    <HeroImage
-      alt={data.name}
-      fluid={data.heroImage.fluid}
-    />
+const Hero = ({ data }) => (
+  <StyledHero>
+    <HeroImage alt={data.name} fluid={data.heroImage.fluid} />
     <HeroDetails>
       <h3>{data.name}</h3>
       <HeroTitle>{data.title}</HeroTitle>
       <p>{data.shortBio.shortBio}</p>
     </HeroDetails>
-  </Hero>
-)
+  </StyledHero>
+);
+
+export default Hero;

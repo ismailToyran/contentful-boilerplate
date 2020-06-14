@@ -1,10 +1,10 @@
-import React from 'react'
-import styled from 'styled-components'
-import { Link, graphql } from 'gatsby'
-import get from 'lodash/get'
+import React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
 
-import Layout from "../components/layout/index"
-import ArticlePreview from '../components/article-preview'
+import Layout from '../components/layout/index';
+import ArticlePreview from '../components/article-preview';
 
 const Hero = styled.div`
   display: flex;
@@ -19,8 +19,8 @@ const Hero = styled.div`
 
 class BlogIndex extends React.Component {
   render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const posts = get(this, 'props.data.allContentfulBlogPost.edges')
+    const siteTitle = get(this, 'props.data.site.siteMetadata.title');
+    const posts = get(this, 'props.data.allContentfulBlogPost.edges');
 
     return (
       <Layout title={siteTitle}>
@@ -34,17 +34,17 @@ class BlogIndex extends React.Component {
                   <li key={node.slug}>
                     <ArticlePreview article={node} />
                   </li>
-                )
+                );
               })}
             </ul>
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default BlogIndex
+export default BlogIndex;
 
 export const pageQuery = graphql`
   query BlogIndexQuery {
@@ -74,4 +74,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

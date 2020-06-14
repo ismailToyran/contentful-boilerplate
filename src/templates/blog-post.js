@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import { graphql } from 'gatsby'
-import { Helmet } from 'react-helmet'
-import get from 'lodash/get'
-import Img from 'gatsby-image'
-import Layout from "../components/layout/index"
+import React from 'react';
+import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import get from 'lodash/get';
+import Img from 'gatsby-image';
+import Layout from '../components/layout/index';
 
 const Hero = styled.div`
   position: relative;
@@ -16,44 +15,39 @@ const Hero = styled.div`
 const HeroImage = styled(Img)`
   height: 61.8vh;
   max-height: 400px;
-`
+`;
 
 class BlogPostTemplate extends React.Component {
   render() {
-    const post = get(this.props, 'data.contentfulBlogPost')
-    const siteTitle = get(this.props, 'data.site.siteMetadata.title')
-
+    const post = get(this.props, 'data.contentfulBlogPost');
     return (
       <Layout title={post.title}>
         <div style={{ background: '#fff' }}>
           <Hero>
-            <HeroImage
-              alt={post.title}
-              fluid={post.heroImage.fluid}
-            />
+            <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
           </Hero>
           <div className="wrapper">
             <h1 className="section-headline">{post.title}</h1>
             <p
               style={{
-                display: 'block',
+                display: 'block'
               }}
             >
               {post.publishDate}
             </p>
             <div
               dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html,
+                __html: post.body.childMarkdownRemark.html
               }}
             />
           </div>
         </div>
       </Layout>
-    )
+    );
   }
 }
 
-export default BlogPostTemplate
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
@@ -77,4 +71,4 @@ export const pageQuery = graphql`
       }
     }
   }
-`
+`;

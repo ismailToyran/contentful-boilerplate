@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
 body {
@@ -56,6 +56,6 @@ a {
 .list-inline li {
   display: inline-block;
 }
-`
+`;
 
 export default GlobalStyle;

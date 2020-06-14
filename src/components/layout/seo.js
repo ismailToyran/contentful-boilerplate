@@ -1,8 +1,8 @@
-import React from "react"
-import PropTypes from "prop-types"
-import { Helmet } from "react-helmet"
-import { useStaticQuery, graphql } from "gatsby"
-const SEO = ({ lang, title, description,  meta }) => {
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Helmet } from 'react-helmet';
+import { useStaticQuery, graphql } from 'gatsby';
+const SEO = ({ lang, title, description, meta }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -16,8 +16,8 @@ const SEO = ({ lang, title, description,  meta }) => {
         }
       }
     `
-  )
-  const metaDescription = description || site.siteMetadata.description
+  );
+  const metaDescription = description || site.siteMetadata.description;
   return (
     <Helmet
       htmlAttributes={{ lang }}
@@ -25,17 +25,17 @@ const SEO = ({ lang, title, description,  meta }) => {
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
-          name: `description`,
-          content: metaDescription,
+          name: 'description',
+          content: metaDescription
         },
         {
-          name: `author`,
-          content: site.siteMetadata.author,
+          name: 'author',
+          content: site.siteMetadata.author
         },
         {
-          name: `keywords`,
-          content: site.siteMetadata.keywords.join(", "),
-        },
+          name: 'keywords',
+          content: site.siteMetadata.keywords.join(', ')
+        }
         // {
         //   property: `og:title`,
         //   content: title,
@@ -66,18 +66,18 @@ const SEO = ({ lang, title, description,  meta }) => {
         // },
       ].concat(meta)}
     />
-  )
-}
+  );
+};
 SEO.defaultProps = {
-  lang: `en`,
-  meta: [],
-}
+  lang: 'en',
+  meta: []
+};
 SEO.propTypes = {
   lang: PropTypes.string,
   title: PropTypes.string.isRequired,
   description: PropTypes.string,
   author: PropTypes.string,
   keywords: PropTypes.array,
-  meta: PropTypes.arrayOf(PropTypes.object),
-}
+  meta: PropTypes.arrayOf(PropTypes.object)
+};
 export default SEO;
