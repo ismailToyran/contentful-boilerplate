@@ -11,7 +11,10 @@
     "type": "git",
     "url": "git+https://github.com/ismailToyran/contentful-boilerplate.git"
   },
-  "keywords": ["gatsby", "contentful"],
+  "keywords": [
+    "gatsby",
+    "contentful"
+  ],
   "license": "MIT",
   "main": "n/a",
   "dependencies": {
