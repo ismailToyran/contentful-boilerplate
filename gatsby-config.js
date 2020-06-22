@@ -52,6 +52,21 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
     {
+      resolve: 'gatsby-plugin-module-resolver',
+      options: {
+        root: './src',
+        aliases: {
+          '@components': './components',
+          '@layout': './components/layout',
+          '@images': './images',
+          '@pages': './pages',
+          '@styles': './styles',
+          '@theme': './styles/theme',
+          '@templates': './templates'
+        }
+      }
+    },
+    {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
         host: 'https://www.ismailtoyran.com',

@@ -10,18 +10,20 @@ import GlobalStyle from '../../styles/global';
 
 import theme from '../../styles/theme';
 
-const Layout = ({ title, children }) => {
+const Layout = ({ title, children, noHeader, noNavigation, noFooter }) => {
   return (
     <>
       <SEO title={title} />
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-        <Header />
-        <Container>
-          <Navigation />
-          {children}
-        </Container>
-        <Footer />
+        {!noHeader && <Header />}
+        {!noNavigation && (
+          <Container>
+            <Navigation />
+          </Container>
+        )}
+        {children}
+        {!noFooter && <Footer />}
       </ThemeProvider>
     </>
   );
