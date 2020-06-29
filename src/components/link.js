@@ -8,6 +8,9 @@ const CustomLink = ({ children, to, className, ...props }) => {
   const { lang } = useContext(GlobalStateContext);
   const defaultLang = process.env.DEFAULT_LANG;
 
+  console.log(lang, defaultLang);
+  console.log(lang === defaultLang);
+
   const isActive = className => ({ location, href }) => {
     const activeClassName = { className: `${className} active` };
     return href !== ('/' || `/${lang}/`) && location.pathname.includes(href)
