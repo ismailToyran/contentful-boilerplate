@@ -1,4 +1,4 @@
-import usePathContext from './use-path-context';
+import usePageContext from './use-page-context';
 import useSiteMetadata from './use-site-metadata';
 
-export { usePathContext, useSiteMetadata };
+export { usePageContext, useSiteMetadata };

@@ -44,7 +44,7 @@ const Hero = styled.div`
 export default BlogIndex;
 
 export const pageQuery = graphql`
-  query BlogIndexQuery {
+  query BlogIndexTrQuery {
     site {
       siteMetadata {
         title

@@ -35,7 +35,7 @@ const RootIndex = ({ data }) => {
 export default RootIndex;
 
 export const pageQuery = graphql`
-  query HomeQuery {
+  query HomeEnQuery {
     site {
       siteMetadata {
         title
