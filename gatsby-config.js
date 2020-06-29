@@ -2,23 +2,14 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 });
 
+const googleTagManagerId = process.env.GTM_ID;
+
 const contentfulConfig = {
   spaceId: process.env.CONTENTFUL_SPACE_ID,
   accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
 };
 
-const googleTagManagerId = process.env.GTM_ID;
-
-// if you want to use the preview API please define
-// CONTENTFUL_HOST in your environment config
-// the `host` property should map to `preview.contentful.com`
-// https://www.contentful.com/developers/docs/references/content-preview-api/#/reference/spaces/space/get-a-space/console/js
-if (process.env.CONTENTFUL_HOST) {
-  contentfulConfig.host = process.env.CONTENTFUL_HOST;
-}
-
 const { spaceId, accessToken } = contentfulConfig;
-
 if (!spaceId || !accessToken) {
   throw new Error(
     'Contentful spaceId and the access token need to be provided.'
@@ -52,13 +43,25 @@ module.exports = {
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
     {
+      resolve: 'gatsby-plugin-i18n',
+      options: {
+        langKeyDefault: 'en',
+        useLangKeyLayout: false,
+        prefixDefault: false
+      }
+    },
+    {
       resolve: 'gatsby-plugin-module-resolver',
       options: {
         root: './src',
         aliases: {
           '@components': './components',
           '@layout': './components/layout',
+          '@inner-layouts': './components/inner-layouts',
+          '@typography': './components/typography',
           '@images': './images',
+          '@hooks': './hooks',
+          '@context': './context',
           '@pages': './pages',
           '@styles': './styles',
           '@theme': './styles/theme',

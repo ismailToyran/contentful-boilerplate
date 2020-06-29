@@ -1,5 +1,11 @@
-import React from 'react';
+import styled from 'styled-components';
+import { Flex } from 'reflexbox/styled-components';
 
-export default ({ children }) => (
-  <div style={{ maxWidth: 1180, margin: '0 auto' }}>{children}</div>
-);
+export default styled(Flex)`
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  @media (max-width: 1320px) {
+    margin: 0 5vmin;
+  }
+`;
