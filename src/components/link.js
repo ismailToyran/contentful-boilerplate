@@ -6,10 +6,7 @@ import { GlobalStateContext } from '@context';
 
 const CustomLink = ({ children, to, className, ...props }) => {
   const { lang } = useContext(GlobalStateContext);
-  const defaultLang = process.env.DEFAULT_LANG;
-
-  console.log(lang, defaultLang);
-  console.log(lang === defaultLang);
+  const defaultLang = 'en';
 
   const isActive = className => ({ location, href }) => {
     const activeClassName = { className: `${className} active` };
