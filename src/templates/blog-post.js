@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
-import get from 'lodash/get';
+import styled from 'styled-components';
 import Img from 'gatsby-image';
-import Layout from '../components/layout/index';
+
+import SEO from '@components/seo';
 
 const Hero = styled.div`
   position: relative;
@@ -17,35 +17,34 @@ const HeroImage = styled(Img)`
   max-height: 400px;
 `;
 
-class BlogPostTemplate extends React.Component {
-  render() {
-    const post = get(this.props, 'data.contentfulBlogPost');
-    return (
-      <Layout title={post.title}>
-        <div style={{ background: '#fff' }}>
-          <Hero>
-            <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
-          </Hero>
-          <div className="wrapper">
-            <h1 className="section-headline">{post.title}</h1>
-            <p
-              style={{
-                display: 'block'
-              }}
-            >
-              {post.publishDate}
-            </p>
-            <div
-              dangerouslySetInnerHTML={{
-                __html: post.body.childMarkdownRemark.html
-              }}
-            />
-          </div>
+const BlogPostTemplate = ({ data }) => {
+  const post = data.contentfulBlogPost;
+  return (
+    <>
+      <SEO title={post.title} />
+      <div style={{ background: '#fff' }}>
+        <Hero>
+          <HeroImage alt={post.title} fluid={post.heroImage.fluid} />
+        </Hero>
+        <div className="wrapper">
+          <h1 className="section-headline">{post.title}</h1>
+          <p
+            style={{
+              display: 'block'
+            }}
+          >
+            {post.publishDate}
+          </p>
+          <div
+            dangerouslySetInnerHTML={{
+              __html: post.body.childMarkdownRemark.html
+            }}
+          />
         </div>
-      </Layout>
-    );
-  }
-}
+      </div>
+    </>
+  );
+};
 
 export default BlogPostTemplate;
 
