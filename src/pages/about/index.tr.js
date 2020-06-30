@@ -3,10 +3,7 @@ import { graphql } from 'gatsby';
 
 import About from '@inner-layouts/about';
 
-import { usePageContext } from '@hooks';
-
-export default ({ data, pageContext: { langKey } }) => {
-  usePageContext(langKey);
+export default ({ data }) => {
   return <About data={data.allContentfulHomepage.edges[0]} />;
 };
 
