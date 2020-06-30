@@ -5,7 +5,10 @@ import { graphql } from 'gatsby';
 import SEO from '@components/seo';
 import ArticlePreview from '@components/article-preview';
 
-const BlogIndex = ({ data }) => {
+import { usePageContext } from '@hooks';
+
+const BlogIndex = ({ data, pageContext: { langKey } }) => {
+  usePageContext(langKey);
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allContentfulBlogPost.edges;
   return (

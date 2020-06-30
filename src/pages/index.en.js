@@ -5,7 +5,10 @@ import SEO from '@components/seo';
 import Hero from '@components/hero';
 import ArticlePreview from '@components/article-preview';
 
-const RootIndex = ({ data }) => {
+import { usePageContext } from '@hooks';
+
+const RootIndex = ({ data, pageContext: { langKey } }) => {
+  usePageContext(langKey);
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allContentfulBlogPost.edges;
   const [author] = data.allContentfulPerson.edges;
