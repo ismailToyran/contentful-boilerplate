@@ -33,6 +33,13 @@ export const pageQuery = graphql`
               }
             }
           }
+          logos {
+            id
+            title
+            fixed(quality: 100, width: 400, resizingBehavior: PAD) {
+              ...GatsbyContentfulFixed_withWebp
+            }
+          }
         }
       }
     }

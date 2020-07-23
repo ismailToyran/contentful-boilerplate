@@ -33,6 +33,18 @@ export const pageQuery = graphql`
               }
             }
           }
+          logos {
+            id
+            title
+            fluid(
+              quality: 100
+              maxWidth: 400
+              maxHeight: 400
+              resizingBehavior: SCALE
+            ) {
+              ...GatsbyContentfulFluid_withWebp
+            }
+          }
         }
       }
     }

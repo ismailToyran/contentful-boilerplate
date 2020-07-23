@@ -3,6 +3,24 @@ import styled from 'styled-components';
 import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 
+const ArticlePreview = ({ article }) => {
+  return (
+    <div>
+      <Img alt="" fluid={article.heroImage.fluid} />
+      <PreviewTitle>
+        <Link to={`/blog/${article.slug}`}>{article.title}</Link>
+      </PreviewTitle>
+      <small>{article.publishDate}</small>
+      <div
+        dangerouslySetInnerHTML={{
+          __html: article.description.childMarkdownRemark.html
+        }}
+      />
+      {article.tags && article.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
+    </div>
+  );
+};
+
 const PreviewTitle = styled.h3`
   font-size: 1.5em;
 `;
@@ -18,18 +36,4 @@ const Tag = styled.p`
   margin-right: 0.5em;
 `;
 
-export default ({ article }) => (
-  <div>
-    <Img alt="" fluid={article.heroImage.fluid} />
-    <PreviewTitle>
-      <Link to={`/blog/${article.slug}`}>{article.title}</Link>
-    </PreviewTitle>
-    <small>{article.publishDate}</small>
-    <div
-      dangerouslySetInnerHTML={{
-        __html: article.description.childMarkdownRemark.html
-      }}
-    />
-    {article.tags && article.tags.map(tag => <Tag key={tag}>{tag}</Tag>)}
-  </div>
-);
+export default ArticlePreview;

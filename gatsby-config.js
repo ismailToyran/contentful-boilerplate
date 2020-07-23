@@ -2,38 +2,110 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`
 });
 
-const googleTagManagerId = process.env.GTM_ID;
-
-const contentfulConfig = {
-  spaceId: process.env.CONTENTFUL_SPACE_ID,
-  accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
-};
-
-const { spaceId, accessToken } = contentfulConfig;
-if (!spaceId || !accessToken) {
+if (!process.env.CONTENTFUL_SPACE_ID || !process.env.CONTENTFUL_ACCESS_TOKEN) {
   throw new Error(
     'Contentful spaceId and the access token need to be provided.'
   );
 }
 
-module.exports = {
-  siteMetadata: {
-    title: 'Gatsby Contentful starter',
-    siteUrl: 'https://www.ismailtoyran.com',
-    description: 'A simple description about pandas eating lots...',
-    author: 'ismail Toyran',
-    keywords: ['gatsby', 'contentful', 'portfolio']
-  },
-  pathPrefix: '/gatsby-contentful-starter',
-  plugins: [
-    {
-      resolve: 'gatsby-plugin-google-tagmanager',
-      options: {
-        id: googleTagManagerId,
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: 'gatsby' }
+const siteMetadata = {
+  title: 'ismail Toyran | Front-End Developer',
+  siteUrl: 'https://www.ismailtoyran.com',
+  description:
+    'ismail Toyran is a Front-End developer based in Turkey who specialized on building modern PWA / commercial websites and mobile applications, now works for remote aswell.',
+  author: 'ismail Toyran',
+  keywords: [
+    'gatsby',
+    'contentful',
+    'netlify',
+    'front-end',
+    'web developer',
+    'react'
+  ]
+};
+
+const GatsbyPluginGoogleTagmanager = {
+  resolve: 'gatsby-plugin-google-tagmanager',
+  options: {
+    id: process.env.GTM_ID,
+    includeInDevelopment: false,
+    defaultDataLayer: { platform: 'gatsby' }
+  }
+};
+
+const GatsbyPluginI18n = {
+  resolve: 'gatsby-plugin-i18n',
+  options: {
+    langKeyDefault: 'en',
+    useLangKeyLayout: false,
+    prefixDefault: false
+  }
+};
+
+const GatsbyPluginRobotsTxt = {
+  resolve: 'gatsby-plugin-robots-txt',
+  options: {
+    host: 'https://www.ismailtoyran.com',
+    sitemap: 'https://www.ismailtoyran.com/sitemap.xml',
+    env: {
+      development: {
+        policy: [{ userAgent: '*', disallow: ['/'] }]
+      },
+      production: {
+        policy: [{ userAgent: '*', allow: '/' }]
       }
-    },
+    }
+  }
+};
+
+const GatsbySourceContentful = {
+  resolve: 'gatsby-source-contentful',
+  options: {
+    spaceId: process.env.CONTENTFUL_SPACE_ID,
+    accessToken: process.env.CONTENTFUL_ACCESS_TOKEN
+  }
+};
+
+const GatsbyPluginManifest = {
+  resolve: 'gatsby-plugin-manifest',
+  options: {
+    name: 'ismail Toyran Portfolio',
+    short_name: 'ismailToyran',
+    description:
+      'ismail Toyran is a Front-End developer based in Turkey who specialized on building modern PWA / commercial websites and mobile applications, now works for remote aswell.',
+    start_url: '/',
+    background_color: '#663399',
+    theme_color: '#fff',
+    display: 'standalone',
+    icon: 'src/images/icon.png',
+    cache_busting_mode: 'none',
+    lang: 'en',
+    localize: [
+      {
+        start_url: '/tr/',
+        lang: 'tr',
+        name: 'ismail Toyran',
+        short_name: 'ismailToyran',
+        description:
+          'ismail Toyran is a Front-End developer based in Turkey who specialized on building modern PWA / commercial websites and mobile applications, now works for remote aswell.'
+      }
+    ]
+  }
+};
+
+const GatsbyPluginOffline = {
+  resolve: 'gatsby-plugin-offline',
+  options: {
+    workboxConfig: {
+      globPatterns: ['**/*']
+    }
+  }
+};
+
+module.exports = {
+  siteMetadata,
+  plugins: [
+    GatsbyPluginGoogleTagmanager,
     'gatsby-transformer-remark',
     'gatsby-transformer-sharp',
     'gatsby-plugin-react-helmet',
@@ -42,85 +114,10 @@ module.exports = {
     'gatsby-plugin-preload-link-crossorigin',
     'gatsby-plugin-styled-components',
     'gatsby-plugin-eslint',
-    {
-      resolve: 'gatsby-plugin-i18n',
-      options: {
-        langKeyDefault: 'en',
-        useLangKeyLayout: false,
-        prefixDefault: false
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-module-resolver',
-      options: {
-        root: './src',
-        aliases: {
-          '@components': './components',
-          '@layout': './components/layout',
-          '@inner-layouts': './components/inner-layouts',
-          '@typography': './components/typography',
-          '@images': './images',
-          '@hooks': './hooks',
-          '@context': './context',
-          '@pages': './pages',
-          '@styles': './styles',
-          '@theme': './styles/theme',
-          '@templates': './templates'
-        }
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-robots-txt',
-      options: {
-        host: 'https://www.ismailtoyran.com',
-        sitemap: 'https://www.ismailtoyran.com/sitemap.xml',
-        env: {
-          development: {
-            policy: [{ userAgent: '*', disallow: ['/'] }]
-          },
-          production: {
-            policy: [{ userAgent: '*', allow: '/' }]
-          }
-        }
-      }
-    },
-    {
-      resolve: 'gatsby-source-contentful',
-      options: contentfulConfig
-    },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'The Cool Application',
-        short_name: 'Cool App',
-        description:
-          'The application does cool things and makes your life better.',
-        start_url: '/',
-        background_color: '#663399',
-        theme_color: '#fff',
-        display: 'standalone',
-        icon: 'src/images/icon.png',
-        cache_busting_mode: 'none',
-        lang: 'en',
-        localize: [
-          {
-            start_url: '/de/',
-            lang: 'de',
-            name: 'Die coole Anwendung',
-            short_name: 'Coole Anwendung',
-            description:
-              'Die Anwendung macht coole Dinge und macht Ihr Leben besser.'
-          }
-        ]
-      }
-    },
-    {
-      resolve: 'gatsby-plugin-offline',
-      options: {
-        workboxConfig: {
-          globPatterns: ['**/*']
-        }
-      }
-    }
+    GatsbyPluginI18n,
+    GatsbyPluginRobotsTxt,
+    GatsbySourceContentful,
+    GatsbyPluginManifest,
+    GatsbyPluginOffline
   ]
 };

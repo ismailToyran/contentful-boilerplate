@@ -7,7 +7,6 @@ import { GlobalDispatchContext } from '@context';
 
 const LangSwitch = () => {
   const dispatch = useContext(GlobalDispatchContext);
-
   return (
     <StyledLangSwitch>
       <button

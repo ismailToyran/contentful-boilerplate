@@ -1,8 +1,11 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
+import { Flex } from 'reflexbox/styled-components';
 import BackgroundImage from 'gatsby-background-image';
 import { GlobalDispatchContext, GlobalStateContext } from '@context';
 
+import LogoCard from '@components/cards/logo.js';
+import IconLogo from '@components/logo.js';
 import SEO from '@components/seo';
 import { P } from '@typography';
 
@@ -48,6 +51,12 @@ const About = ({ data }) => {
           Tr
         </button>
       </StyledBackgroundImage>
+      <Flex bg="#000" p="20px">
+        {data.node.logos.map(logo => (
+          <LogoCard key={logo.id} fixed={logo.fixed} title={logo.title} />
+        ))}
+      </Flex>
+      <IconLogo />
     </>
   );
 };

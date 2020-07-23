@@ -23,6 +23,26 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
       }
     });
   }
+  actions.setWebpackConfig({
+    resolve: {
+      alias: {
+        '@components': path.resolve(__dirname, 'src/components'),
+        '@layout': path.resolve(__dirname, 'src/components/layout'),
+        '@inner-layouts': path.resolve(
+          __dirname,
+          'src/components/inner-layouts'
+        ),
+        '@typography': path.resolve(__dirname, 'src/components/typography'),
+        '@images': path.resolve(__dirname, 'src/images'),
+        '@hooks': path.resolve(__dirname, 'src/hooks'),
+        '@context': path.resolve(__dirname, 'src/context'),
+        '@pages': path.resolve(__dirname, 'src/pages'),
+        '@styles': path.resolve(__dirname, 'src/styles'),
+        '@theme': path.resolve(__dirname, 'src/styles/theme'),
+        '@templates': path.resolve(__dirname, 'src/templates')
+      }
+    }
+  });
 };
 
 exports.createPages = ({ graphql, actions }) => {
